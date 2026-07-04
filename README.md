@@ -1,7 +1,7 @@
 # 🚀 Lunar Autonomous Planner 🌕
 
 <p align="center">
-  <img src="./images/banner.PNG" alt="Lunar Autonomous Planner Banner" width="100%">
+  <img src="lunar-autonomous-planner-hero.PNG" alt="Lunar Autonomous Planner Banner" width="100%">
 </p>
 
 <p align="center">
@@ -15,16 +15,16 @@
 </p>
 
 <p align="center">
-<b>🌕 AI-powered mission planning for autonomous lunar exploration.</b>
+<b>🌕 AI-Powered Mission Planning for Autonomous Lunar Exploration</b>
 </p>
 
 ---
 
 # 🌖 Overview
 
-**Lunar Autonomous Planner** is a professional aerospace mission planning platform that evaluates potential lunar landing sites using AI-assisted terrain intelligence, hazard detection, communications analysis, solar illumination modeling, habitat planning, and autonomous rover path optimization.
+**Lunar Autonomous Planner** is an interactive aerospace mission planning application that evaluates potential lunar landing sites using AI-assisted terrain analysis, hazard detection, communications modeling, habitat planning, and autonomous rover path optimization.
 
-Designed to emulate the workflow of modern robotic precursor missions, the application helps engineers assess landing safety, mission readiness, and infrastructure placement before human arrival.
+The application demonstrates how robotic precursor missions can safely evaluate lunar environments before crewed missions arrive, supporting future scientific exploration and sustained lunar operations.
 
 ---
 
@@ -36,37 +36,37 @@ Designed to emulate the workflow of modern robotic precursor missions, the appli
 - 🛰️ Interactive 3D terrain visualization
 - 📈 Landing suitability scoring
 - ⛰️ Surface slope analysis
-- 🗺️ Terrain heatmaps
+- 🗺️ Terrain heat maps
 
 ## 🤖 AI Hazard Detection
 
-- 🪨 Boulder field identification
-- 🌑 Crater detection
+- 🪨 Boulder field detection
+- 🌑 Crater identification
 - 📉 Hazardous slope analysis
 - 🌘 Shadowed region mapping
 - 🚧 Landing hazard assessment
 
 ## 🏠 Habitat Planning
 
-- Habitat placement recommendations
-- Solar array siting
-- Communications relay planning
-- Infrastructure layout
-- ISRU resource zone planning
+- Habitat placement
+- Solar array positioning
+- Communications infrastructure
+- Power distribution planning
+- ISRU resource zone assessment
 
 ## 🚜 Autonomous Rover Planning
 
 - Rover traverse generation
 - Waypoint planning
 - Distance estimation
-- Survey time prediction
+- Traverse optimization
 - Hazard-aware routing
 
 ## 📡 Communications Analysis
 
-- Earth visibility estimation
+- Earth visibility
 - Relay geometry
-- Coverage assessment
+- Coverage estimation
 - One-way communication latency
 
 ## ☀️ Environmental Analysis
@@ -74,15 +74,31 @@ Designed to emulate the workflow of modern robotic precursor missions, the appli
 - Solar exposure
 - Illumination duration
 - Terrain suitability
-- Environmental conditions
+- Local environmental conditions
 
 ## 📊 Mission Analytics
 
 - Landing Zone Score
 - Mission Readiness
-- AI Recommendations
-- Engineering Summary
-- JSON & CSV export
+- AI Mission Recommendations
+- Engineering Reports
+- JSON and CSV export
+
+---
+
+# 🧠 AI Decision Support
+
+The onboard planning engine evaluates:
+
+- Terrain slope
+- Boulder density
+- Crater proximity
+- Solar illumination
+- Communications geometry
+- Surface suitability
+- Overall mission risk
+
+The system recommends the safest landing zone while balancing operational safety, communications performance, and long-term infrastructure planning.
 
 ---
 
@@ -93,7 +109,7 @@ Designed to emulate the workflow of modern robotic precursor missions, the appli
 | 🐍 Python | Core application |
 | 🚀 Streamlit | Interactive dashboard |
 | 📈 Plotly | Scientific visualization |
-| 🔢 NumPy | Numerical analysis |
+| 🔢 NumPy | Numerical computation |
 | 🐼 Pandas | Data processing |
 
 ---
@@ -110,13 +126,13 @@ python -m venv .venv
 
 Activate the virtual environment.
 
-### Windows
+**Windows**
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### macOS / Linux
+**macOS / Linux**
 
 ```bash
 source .venv/bin/activate
@@ -141,33 +157,35 @@ streamlit run app.py
 ```text
 lunar-autonomous-planner/
 
+├── lunar-autonomous-planner-hero.PNG
 ├── app.py
 ├── requirements.txt
 ├── README.md
-│
-├── images/
-│   ├── banner.PNG
-│   ├── dashboard-overview.png
-│   ├── terrain-analysis.png
-│   ├── habitat-planning.png
-│   └── rover-path-planning.png
-│
 ├── docs/
-│   ├── User_Guide.pdf
-│   ├── Aerospace_Math_Appendix.pdf
-│   └── Systems_Engineering_Appendix.pdf
-│
 └── exports/
 ```
 
 ---
 
-# 🚀 Roadmap
+# 🎯 Applications
+
+- 🌕 Lunar exploration
+- 🤖 Autonomous robotics
+- 🛰️ Planetary mission planning
+- 🏗️ Habitat site assessment
+- 📡 Communications planning
+- 🚜 Robotic precursor missions
+- 🧠 AI-assisted decision support
+- 🧭 Space systems engineering
+
+---
+
+# 🛣️ Roadmap
 
 ### Current
 
-- ✅ AI landing zone assessment
-- ✅ Terrain generation
+- ✅ Landing zone assessment
+- ✅ Terrain analysis
 - ✅ Hazard detection
 - ✅ Habitat planning
 - ✅ Rover path planning
@@ -175,14 +193,13 @@ lunar-autonomous-planner/
 
 ### Planned
 
-- 🌍 NASA LRO terrain integration
-- 🛰️ High-resolution digital elevation models
+- 🌍 LRO terrain integration
+- 🛰️ Digital elevation model imports
 - 🤖 Multi-rover coordination
 - 🧠 Machine learning landing prediction
 - 🌒 Permanently shadowed region analysis
 - 📡 Orbital relay simulation
 - 🪨 ISRU resource assessment
-- 🛰️ Mars mission support
 - 🥽 VR mission visualization
 
 ---
@@ -221,13 +238,3 @@ If you found this project useful:
 > *"We choose to go to the Moon... not because it is easy, but because it is hard."*  
 > **President John F. Kennedy**  
 > Rice University, September 12, 1962
-
----
-
-<p align="center">
-
-## 🌕 Built for the Next Giant Leap 🚀
-
-**Autonomy • Intelligence • Exploration**
-
-</p>
