@@ -219,7 +219,7 @@ lunar-autonomous-planner/
 
 AI • Aerospace • Autonomous Systems • Space Mission Planning
 
-GitHub: https://github.com/tareqomrani
+Streamlit: share.streamlit.io/user/tareqomrani
 
 ---
 
