@@ -1,7 +1,7 @@
 # 🚀 Lunar Autonomous Planner 🌕
 
 <p align="center">
-  <img src="images/banner.PNG" alt="Lunar Autonomous Planner Banner" width="100%">
+  <img src="./images/banner.PNG" alt="Lunar Autonomous Planner Banner" width="100%">
 </p>
 
 <p align="center">
@@ -14,17 +14,17 @@
 
 </p>
 
-> **AI-powered mission planning software for autonomous lunar landing zone assessment, terrain analysis, hazard detection, habitat planning, and rover mission optimization.**
+<p align="center">
+<b>🌕 AI-powered mission planning for autonomous lunar exploration.</b>
+</p>
 
 ---
 
 # 🌖 Overview
 
-**Lunar Autonomous Planner** is a professional aerospace mission planning application built with **Python** and **Streamlit** to simulate robotic precursor missions supporting future lunar exploration.
+**Lunar Autonomous Planner** is a professional aerospace mission planning platform that evaluates potential lunar landing sites using AI-assisted terrain intelligence, hazard detection, communications analysis, solar illumination modeling, habitat planning, and autonomous rover path optimization.
 
-The application combines terrain analysis, AI-assisted hazard detection, environmental modeling, habitat planning, communications assessment, and rover path optimization into a single interactive mission planning environment.
-
-Designed as both a graduate-level systems engineering project and a professional aerospace portfolio application, the software demonstrates how artificial intelligence can support autonomous lunar operations before astronauts arrive.
+Designed to emulate the workflow of modern robotic precursor missions, the application helps engineers assess landing safety, mission readiness, and infrastructure placement before human arrival.
 
 ---
 
@@ -32,177 +32,103 @@ Designed as both a graduate-level systems engineering project and a professional
 
 ## 🌍 Terrain Intelligence
 
-- 🌕 Procedurally generated lunar terrain
-- 🗺️ Interactive 3D terrain visualization
-- 📈 Landing suitability heatmap
-- ⛰️ Terrain slope analysis
-- 🛰️ Surface elevation modeling
-
----
+- 🌕 Procedural lunar terrain generation
+- 🛰️ Interactive 3D terrain visualization
+- 📈 Landing suitability scoring
+- ⛰️ Surface slope analysis
+- 🗺️ Terrain heatmaps
 
 ## 🤖 AI Hazard Detection
 
-Automatically identifies:
-
-- 🪨 Boulder fields
-- 🌑 Impact craters
-- 📉 Hazardous slopes
-- 🌘 Shadowed regions
-- 🚧 Landing hazards
-
----
+- 🪨 Boulder field identification
+- 🌑 Crater detection
+- 📉 Hazardous slope analysis
+- 🌘 Shadowed region mapping
+- 🚧 Landing hazard assessment
 
 ## 🏠 Habitat Planning
 
-Generate recommendations for:
+- Habitat placement recommendations
+- Solar array siting
+- Communications relay planning
+- Infrastructure layout
+- ISRU resource zone planning
 
-- 🏕️ Habitat placement
-- ☀️ Solar array locations
-- 📡 Communications infrastructure
-- 🔋 Power generation areas
-- 🧪 Future ISRU support locations
+## 🚜 Autonomous Rover Planning
 
----
-
-## 🚜 Rover Mission Planning
-
-- 🛣️ Autonomous traverse generation
-- 📍 Waypoint planning
-- ⏱️ Mission duration estimates
-- 📏 Traverse distance calculations
-- 🚧 Hazard avoidance
-
----
+- Rover traverse generation
+- Waypoint planning
+- Distance estimation
+- Survey time prediction
+- Hazard-aware routing
 
 ## 📡 Communications Analysis
 
-Evaluate:
-
-- 🌍 Earth visibility
-- 📶 Relay coverage
-- 📡 High-gain antenna geometry
-- ⏳ One-way communication latency
-
----
+- Earth visibility estimation
+- Relay geometry
+- Coverage assessment
+- One-way communication latency
 
 ## ☀️ Environmental Analysis
 
-Analyze:
-
 - Solar exposure
-- Surface illumination
+- Illumination duration
 - Terrain suitability
-- Local environmental conditions
-
----
+- Environmental conditions
 
 ## 📊 Mission Analytics
 
-Generate:
-
-- Landing zone score
-- Mission readiness
-- AI recommendations
-- Mission summary
-- Engineering reports
+- Landing Zone Score
+- Mission Readiness
+- AI Recommendations
+- Engineering Summary
+- JSON & CSV export
 
 ---
 
-# 🧠 AI Recommendations
-
-The onboard decision-support engine evaluates multiple mission factors simultaneously, including:
-
-- Terrain slope
-- Boulder density
-- Crater proximity
-- Communications geometry
-- Solar exposure
-- Surface suitability
-- Mission risk
-
-The system then recommends the safest landing zone and provides engineering guidance for habitat placement and mission execution.
-
----
-
-# 📸 Dashboard
-
-The dashboard includes:
-
-- 🌕 Mission Overview
-- 📈 System Health
-- 🌍 Environmental Conditions
-- 🛰️ 3D Terrain Analysis
-- 🤖 AI Hazard Detection
-- ☀️ Solar Exposure Analysis
-- 📡 Communication Coverage
-- 🏠 Habitat Planning
-- 🚜 Rover Path Planning
-- 💡 AI Mission Recommendations
-- 📋 Mission Summary
-
----
-
-# 💾 Export Options
-
-Generate professional engineering outputs including:
-
-- 📄 JSON Mission Reports
-- 📊 CSV Mission Summaries
-- 🗺️ Terrain Data
-- 🚜 Rover Traverse Information
-- 📈 Mission Analytics
-
----
-
-# 🖥️ Tech Stack
+# 🖥️ Technology Stack
 
 | Technology | Purpose |
 |------------|----------|
 | 🐍 Python | Core application |
-| 🚀 Streamlit | User interface |
-| 📈 Plotly | Interactive visualization |
-| 🔢 NumPy | Scientific computing |
+| 🚀 Streamlit | Interactive dashboard |
+| 📈 Plotly | Scientific visualization |
+| 🔢 NumPy | Numerical analysis |
 | 🐼 Pandas | Data processing |
 
 ---
 
 # ⚙️ Installation
 
-Clone the repository:
-
 ```bash
-git clone https://github.com/yourusername/lunar-autonomous-planner.git
+git clone https://github.com/tareqomrani/lunar-autonomous-planner.git
 
 cd lunar-autonomous-planner
-```
 
-Create a virtual environment:
-
-```bash
 python -m venv .venv
 ```
 
-Activate it.
+Activate the virtual environment.
 
-Windows:
+### Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-macOS/Linux:
+### macOS / Linux
 
 ```bash
 source .venv/bin/activate
 ```
 
-Install dependencies:
+Install dependencies.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Launch the application:
+Launch the application.
 
 ```bash
 streamlit run app.py
@@ -215,65 +141,48 @@ streamlit run app.py
 ```text
 lunar-autonomous-planner/
 
-│
 ├── app.py
 ├── requirements.txt
 ├── README.md
 │
-├── assets/
-│   ├── banner.png
-│   ├── screenshots/
-│   └── icons/
+├── images/
+│   ├── banner.PNG
+│   ├── dashboard-overview.png
+│   ├── terrain-analysis.png
+│   ├── habitat-planning.png
+│   └── rover-path-planning.png
 │
 ├── docs/
 │   ├── User_Guide.pdf
-│   ├── Systems_Engineering_Appendix.pdf
-│   └── Aerospace_Math_Appendix.pdf
+│   ├── Aerospace_Math_Appendix.pdf
+│   └── Systems_Engineering_Appendix.pdf
 │
-├── exports/
-│
-└── images/
+└── exports/
 ```
 
 ---
 
-# 🎯 Intended Users
+# 🚀 Roadmap
 
-This application is designed for:
+### Current
 
-- 🚀 Aerospace engineers
-- 🌕 Lunar mission planners
-- 🤖 Robotics engineers
-- 🛰️ Space systems engineers
-- 📚 Researchers
-- 🎓 Graduate students
-- 🧪 Autonomy developers
-- 🌍 Planetary scientists
+- ✅ AI landing zone assessment
+- ✅ Terrain generation
+- ✅ Hazard detection
+- ✅ Habitat planning
+- ✅ Rover path planning
+- ✅ Mission reporting
 
----
+### Planned
 
-# 🛣️ Roadmap
-
-### ✅ Current
-
-- AI landing zone assessment
-- Hazard detection
-- Terrain generation
-- Rover path planning
-- Habitat planning
-- Mission reporting
-
-### 🔜 Planned
-
-- 🌍 Real Lunar Reconnaissance Orbiter (LRO) terrain integration
-- 🛰️ Digital elevation model imports
+- 🌍 NASA LRO terrain integration
+- 🛰️ High-resolution digital elevation models
 - 🤖 Multi-rover coordination
 - 🧠 Machine learning landing prediction
 - 🌒 Permanently shadowed region analysis
 - 📡 Orbital relay simulation
-- 🌌 Multi-mission campaign planning
-- 🧱 ISRU resource assessment
-- 🧭 Dynamic mission timeline
+- 🪨 ISRU resource assessment
+- 🛰️ Mars mission support
 - 🥽 VR mission visualization
 
 ---
@@ -282,7 +191,7 @@ This application is designed for:
 
 - NASA Artemis Program
 - NASA Systems Engineering Handbook (SP-2016-6105 Rev. 2)
-- NASA Lunar Reconnaissance Orbiter (LRO)
+- NASA Lunar Reconnaissance Orbiter Mission
 - ECSS Space Engineering Standards
 
 ---
@@ -291,24 +200,21 @@ This application is designed for:
 
 **Tareq Omrani**
 
-Graduate Student, Embry-Riddle Aeronautical University
+AI • Aerospace • Autonomous Systems • Space Mission Planning
 
-AI • Aerospace • Systems Engineering • Autonomous Systems
-
-GitHub:
-> https://github.com/tareqomrani
+GitHub: https://github.com/tareqomrani
 
 ---
 
 # ⭐ Support
 
-If you found this project interesting or useful:
+If you found this project useful:
 
 ⭐ Star the repository
 
-🍴 Fork it
+🍴 Fork the repository
 
-🚀 Share it with the aerospace and AI communities
+🚀 Share it with the aerospace community
 
 ---
 
@@ -320,7 +226,7 @@ If you found this project interesting or useful:
 
 <p align="center">
 
-### 🌕 Built for the Next Giant Leap 🚀
+## 🌕 Built for the Next Giant Leap 🚀
 
 **Autonomy • Intelligence • Exploration**
 
