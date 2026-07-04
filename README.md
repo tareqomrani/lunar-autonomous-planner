@@ -1,7 +1,7 @@
 # 🚀 Lunar Autonomous Planner 🌕
 
 <p align="center">
-  <img src="images/banner.png" alt="Lunar Autonomous Planner Banner" width="100%">
+  <img src="images/banner.PNG" alt="Lunar Autonomous Planner Banner" width="100%">
 </p>
 
 <p align="center">
