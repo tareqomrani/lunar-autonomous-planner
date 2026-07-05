@@ -8,6 +8,9 @@ import plotly.graph_objects as go
 import streamlit as st
 
 
+# -----------------------------
+# Page configuration
+# -----------------------------
 st.set_page_config(
     page_title="Lunar Autonomous Landing Zone Assessment",
     page_icon="🌙",
@@ -16,6 +19,9 @@ st.set_page_config(
 )
 
 
+# -----------------------------
+# Styling
+# -----------------------------
 st.markdown(
     """
     <style>
@@ -110,7 +116,7 @@ st.markdown(
         border-radius: 14px;
     }
 
-    .stButton button, .stDownloadButton button {
+    .stButton button, .stDownloadButton button, .stFormSubmitButton button {
         background: linear-gradient(90deg, #102845, #0d395f);
         color: #e6f1ff;
         border: 1px solid rgba(77,179,255,0.45);
@@ -129,6 +135,9 @@ st.markdown(
 )
 
 
+# -----------------------------
+# Utility functions
+# -----------------------------
 def clamp(value: float, low: float, high: float) -> float:
     return max(low, min(high, value))
 
@@ -226,8 +235,8 @@ def landing_suitability(xx, yy, z, slope, craters, boulders, solar_weight, comm_
         + solar_weight * solar_score
         + comm_weight * comm_score
     )
-
     score = score / (hazard_weight + 0.30 + solar_weight + comm_weight)
+
     return clamp_array(score * 100, 0, 100), solar_score, comm_score, hazard_score
 
 
@@ -516,41 +525,51 @@ def run_assessment(params):
     }
 
 
+# -----------------------------
+# Sidebar mission controls
+# -----------------------------
 with st.sidebar:
-    st.markdown("## 🌙 Mission Controls")
+    with st.form("mission_controls_form", clear_on_submit=False):
+        st.markdown("## 🌙 Mission Controls")
 
-    mission_id = st.text_input("Mission ID", "LZAP-2026-001")
-    target_body = st.selectbox("Target Body", ["Moon", "Mars", "Phobos", "Europa", "Custom airless body"], index=0)
-    mission_profile = st.selectbox(
-        "Mission Profile",
-        [
-            "Landing Zone + Habitat Preparation",
-            "Landing Zone Survey Only",
-            "Habitat Site Planning Only",
-            "Communications Relay Survey",
-        ],
-        index=0,
-    )
+        mission_id = st.text_input("Mission ID", "LZAP-2026-001")
+        target_body = st.selectbox(
+            "Target Body",
+            ["Moon", "Mars", "Phobos", "Europa", "Custom airless body"],
+            index=0,
+        )
+        mission_profile = st.selectbox(
+            "Mission Profile",
+            [
+                "Landing Zone + Habitat Preparation",
+                "Landing Zone Survey Only",
+                "Habitat Site Planning Only",
+                "Communications Relay Survey",
+            ],
+            index=0,
+        )
 
-    st.markdown("---")
-    st.markdown("### Terrain Model")
-    seed = st.number_input("Simulation Seed", min_value=1, max_value=9999, value=42, step=1)
-    grid_size = st.slider("Map Resolution", 40, 110, 72, 2)
-    roughness = st.slider("Regolith Roughness", 0.5, 8.0, 3.0, 0.1)
-    crater_count = st.slider("Crater Density", 3, 35, 12)
-    boulder_count = st.slider("Boulder Density", 5, 80, 28)
+        st.markdown("---")
+        st.markdown("### Terrain Model")
+        seed = st.number_input("Simulation Seed", min_value=1, max_value=9999, value=42, step=1)
+        grid_size = st.slider("Map Resolution", 40, 110, 72, 2)
+        roughness = st.slider("Regolith Roughness", 0.5, 8.0, 3.0, 0.1)
+        crater_count = st.slider("Crater Density", 3, 35, 12)
+        boulder_count = st.slider("Boulder Density", 5, 80, 28)
 
-    st.markdown("---")
-    st.markdown("### Scoring Weights")
-    hazard_weight = st.slider("Hazard Avoidance Weight", 0.30, 0.70, 0.48, 0.01)
-    solar_weight = st.slider("Solar Exposure Weight", 0.05, 0.30, 0.14, 0.01)
-    comm_weight = st.slider("Communication Coverage Weight", 0.05, 0.30, 0.08, 0.01)
+        st.markdown("---")
+        st.markdown("### Scoring Weights")
+        hazard_weight = st.slider("Hazard Avoidance Weight", 0.30, 0.70, 0.48, 0.01)
+        solar_weight = st.slider("Solar Exposure Weight", 0.05, 0.30, 0.14, 0.01)
+        comm_weight = st.slider("Communication Coverage Weight", 0.05, 0.30, 0.08, 0.01)
 
-    st.markdown("---")
-    st.markdown("### Rover Planning")
-    rover_speed = st.slider("Rover Survey Speed, m/s", 0.05, 1.50, 0.35, 0.05)
-    route_radius = st.slider("Survey Radius, m", 80, 420, 260, 10)
-    route_legs = st.slider("Survey Waypoints", 4, 16, 9)
+        st.markdown("---")
+        st.markdown("### Rover Planning")
+        rover_speed = st.slider("Rover Survey Speed, m/s", 0.05, 1.50, 0.35, 0.05)
+        route_radius = st.slider("Survey Radius, m", 80, 420, 260, 10)
+        route_legs = st.slider("Survey Waypoints", 4, 16, 9)
+
+        submitted = st.form_submit_button("Run Autonomous Assessment", use_container_width=True)
 
     params = {
         "mission_id": mission_id,
@@ -569,13 +588,15 @@ with st.sidebar:
         "route_legs": route_legs,
     }
 
-    run_button = st.button("Run Autonomous Assessment", use_container_width=True)
-
-    if run_button:
+    if submitted:
         st.session_state["assessment_results"] = run_assessment(params)
         st.session_state["assessment_params"] = params.copy()
+        st.session_state["assessment_timestamp"] = datetime.now(timezone.utc).isoformat()
 
 
+# -----------------------------
+# Header
+# -----------------------------
 st.markdown(
     """
     <div class="main-title">LUNAR AUTONOMOUS LANDING ZONE ASSESSMENT</div>
@@ -618,6 +639,9 @@ risk = results["risk"]
 risk_class = results["risk_class"]
 
 
+# -----------------------------
+# Top mission metrics
+# -----------------------------
 m1, m2, m3, m4, m5 = st.columns(5)
 m1.metric("Landing Zone Score", f"{best_score:.0f}/100", risk)
 m2.metric("Slope at LZ", f"{best_slope:.1f}°", "Target < 5°")
@@ -626,6 +650,9 @@ m4.metric("Solar Index", f"{best_solar * 100:.0f}%", "Power viability")
 m5.metric("Comm Index", f"{best_comm * 100:.0f}%", "Relay visibility")
 
 
+# -----------------------------
+# Main layout
+# -----------------------------
 left, right = st.columns([3.6, 1.25], gap="large")
 
 with left:
@@ -666,28 +693,46 @@ with right:
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+# -----------------------------
+# Secondary analysis panels
+# -----------------------------
 c1, c2, c3 = st.columns(3, gap="large")
 
 with c1:
     st.markdown('<div class="small-card"><div class="card-title">Slope Hazard Map</div>', unsafe_allow_html=True)
-    st.plotly_chart(build_heatmap("Slope, degrees", x, y, slope, "Inferno", best_x, best_y), use_container_width=True)
+    st.plotly_chart(
+        build_heatmap("Slope, degrees", x, y, slope, "Inferno", best_x, best_y),
+        use_container_width=True,
+    )
     st.markdown("</div>", unsafe_allow_html=True)
 
 with c2:
     st.markdown('<div class="small-card"><div class="card-title">Solar Exposure Analysis</div>', unsafe_allow_html=True)
-    st.plotly_chart(build_heatmap("Relative Solar Exposure", x, y, solar_score, "YlOrBr", best_x, best_y), use_container_width=True)
+    st.plotly_chart(
+        build_heatmap("Relative Solar Exposure", x, y, solar_score, "YlOrBr", best_x, best_y),
+        use_container_width=True,
+    )
     st.markdown("</div>", unsafe_allow_html=True)
 
 with c3:
     st.markdown('<div class="small-card"><div class="card-title">Communication Coverage</div>', unsafe_allow_html=True)
-    st.plotly_chart(build_heatmap("Relay Link Quality", x, y, comm_score, "Blues", best_x, best_y), use_container_width=True)
+    st.plotly_chart(
+        build_heatmap("Relay Link Quality", x, y, comm_score, "Blues", best_x, best_y),
+        use_container_width=True,
+    )
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+# -----------------------------
+# Habitat and rover path
+# -----------------------------
 h1, h2 = st.columns([1.55, 1.45], gap="large")
 
 with h1:
-    st.markdown('<div class="section-card"><div class="card-title">Habitat Planning Recommendation</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="section-card"><div class="card-title">Habitat Planning Recommendation</div>',
+        unsafe_allow_html=True,
+    )
 
     hab_offset = 115
     habitat_x = clamp(best_x + hab_offset, -480, 480)
@@ -764,6 +809,9 @@ with h2:
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+# -----------------------------
+# Recommendations and export
+# -----------------------------
 r1, r2 = st.columns([1.6, 1.0], gap="large")
 
 recommendations = [
@@ -787,7 +835,7 @@ with r2:
         "mission_id": active_params["mission_id"],
         "target_body": active_params["target_body"],
         "mission_profile": active_params["mission_profile"],
-        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "timestamp_utc": st.session_state.get("assessment_timestamp", datetime.now(timezone.utc).isoformat()),
         "recommended_landing_zone": {"x_m": best_x, "y_m": best_y, "score": best_score},
         "slope_deg": best_slope,
         "solar_index": best_solar,
@@ -811,7 +859,29 @@ with r2:
         use_container_width=True,
     )
 
-    csv_df = pd.DataFrame([{k: v for k, v in summary.items() if k not in ["recommendations", "recommended_landing_zone"]}])
+    csv_df = pd.DataFrame(
+        [
+            {
+                "mission_id": active_params["mission_id"],
+                "target_body": active_params["target_body"],
+                "mission_profile": active_params["mission_profile"],
+                "timestamp_utc": summary["timestamp_utc"],
+                "lz_x_m": best_x,
+                "lz_y_m": best_y,
+                "lz_score": best_score,
+                "slope_deg": best_slope,
+                "solar_index": best_solar,
+                "communication_index": best_comm,
+                "local_hazards": total_hazards,
+                "craters_detected": len(craters),
+                "boulders_detected": len(boulders),
+                "survey_path_km": total_path_m / 1000,
+                "estimated_survey_time_hr": survey_time_hr,
+                "survey_coverage_percent": survey_coverage,
+            }
+        ]
+    )
+
     st.download_button(
         "Export Mission Summary CSV",
         data=csv_df.to_csv(index=False),
@@ -823,6 +893,9 @@ with r2:
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+# -----------------------------
+# Footer
+# -----------------------------
 st.markdown(
     """
     <br>
